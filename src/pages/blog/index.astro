@@ -61,6 +61,13 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
         margin-top: 0.1em;
       }
     </style>
+    <link
+      rel="preload"
+      href="/fonts/NotoColorEmoji.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
   </head>
   <body>
     <Header />
