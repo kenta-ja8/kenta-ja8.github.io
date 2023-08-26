@@ -1,2 +1,2 @@
 # Kenta Page
-- https://kenta-ja8.github.io
+- https://blog.kenta-ja8.com
