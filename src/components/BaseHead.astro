@@ -12,6 +12,7 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, image = "/my-icon.jpeg" } = Astro.props;
+import ProductionOnly from "./ProductionOnly.astro";
 ---
 
 <!-- Global Metadata -->
@@ -60,3 +61,18 @@ const { title, image = "/my-icon.jpeg" } = Astro.props;
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<ProductionOnly>
+  <script
+    type="text/partytown"
+    src="https://www.googletagmanager.com/gtag/js?id=G-74QJTSY96X"></script>
+
+  <script type="text/partytown">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-74QJTSY96X");
+  </script>
+</ProductionOnly>
