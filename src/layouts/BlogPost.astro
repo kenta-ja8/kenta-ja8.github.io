@@ -6,14 +6,15 @@ import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import EmojiIcon from "../components/EmojiIcon.astro";
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<"blog">["data"] & { slug: string };
 
-const { title, createdAt, updatedAt, heroIcon, category } = Astro.props;
+const { title, createdAt, updatedAt, heroIcon, category, slug } = Astro.props;
+const image = `/og-image/${slug}.png`;
 ---
 
 <html lang="ja">
   <head>
-    <BaseHead title={title} />
+    <BaseHead title={title} image={image} />
     <style>
       .hero-icon {
         font-size: 4em;

@@ -13,10 +13,16 @@
     "@astrojs/mdx": "^0.19.7",
     "@astrojs/rss": "^2.4.4",
     "@astrojs/sitemap": "^2.0.1",
+    "@resvg/resvg-js": "^2.4.1",
+    "@resvg/resvg-js-darwin-arm64": "^2.4.1",
     "astro": "^2.10.5",
-    "ress": "^5.0.2"
+    "ress": "^5.0.2",
+    "satori": "^0.10.3",
+    "satori-html": "^0.3.2",
+    "sharp": "^0.32.5"
   },
   "devDependencies": {
-    "@astrojs/partytown": "^1.2.3"
+    "@astrojs/partytown": "^1.2.3",
+    "@types/sharp": "^0.32.0"
   }
 }
