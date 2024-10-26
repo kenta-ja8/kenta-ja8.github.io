@@ -12,23 +12,23 @@ permissions:
 
 env:
   ASTRO_PATH: "."
-  NODE_VERSION: "18"
-  PNPM_VERSION: "8.x.x"
+  NODE_VERSION: "20"
+  PNPM_VERSION: "9.x.x"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup PNPM
-        uses: pnpm/action-setup@v2.2.4
+        uses: pnpm/action-setup@v4
         with:
           version: ${{ env.PNPM_VERSION }}
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: pnpm
