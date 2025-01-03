@@ -1,7 +1,7 @@
 import type { APIContext } from "astro";
 import satori from "satori";
 import { html } from "satori-html";
-import { getCollection, getEntryBySlug } from "astro:content";
+import { getCollection } from "astro:content";
 import fs from "fs";
 import sharp from "sharp";
 
@@ -16,22 +16,20 @@ const width = 1200;
 export async function getStaticPaths() {
   return (await getCollection("blog")).map(
     (post) =>
-    ({
-      params: { slug: post.slug },
-      props: { collection: "blog" },
-    } as any)
+      ({
+        params: { slug: post.slug },
+        props: { post },
+      } as any)
   );
 }
 
-export async function get({ params, props }: APIContext) {
+export async function GET({ params, props }: APIContext) {
   const font = fs.readFileSync(fontPath);
   const iconBuffer = fs.readFileSync("public/my-icon.jpeg");
   const icon = `data:image/jpeg;base64,${iconBuffer.toString("base64")}`;
 
-  const { slug } = params;
-  const { collection } = props as { collection: "blog" };
+  const { post } = props;
 
-  const post = await getEntryBySlug(collection, slug || "");
   const out = html`<div
     style="display:flex; flex:1; background:linear-gradient(to bottom right, ${accentColor} 60%, ${subColor}); padding:50px;"
   >
@@ -63,7 +61,5 @@ export async function get({ params, props }: APIContext) {
   });
   const image = await sharp(Buffer.from(svg)).png().toBuffer();
 
-  return {
-    body: image,
-  };
+  return new Response(image);
 }

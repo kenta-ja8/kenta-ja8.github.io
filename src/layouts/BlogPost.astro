@@ -106,17 +106,9 @@ const image = `/og-image/${slug}.png`;
         height: auto;
         border-radius: 8px;
       }
-      .contentBox :global(code) {
-        padding: 2px 5px;
-        background-color: rgb(var(--gray-light));
-        border-radius: 2px;
-      }
-      .contentBox :global(> pre) {
+      .contentBox :global(pre) {
         padding: 2em;
         border-radius: 8px;
-      }
-      .contentBox :global(> pre > code) {
-        all: unset;
       }
       .contentBox :global(> blockquote) {
         border-left: 4px solid var(--accent);
