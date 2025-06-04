@@ -1,6 +1,7 @@
 import type { APIContext } from "astro";
 import satori from "satori";
 import { html } from "satori-html";
+import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import fs from "fs";
 import sharp from "sharp";
@@ -13,13 +14,20 @@ const surfaceColor = "white";
 const height = 630;
 const width = 1200;
 
+interface Params {
+  slug: string;
+}
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
 export async function getStaticPaths() {
   return (await getCollection("blog")).map(
-    (post) =>
-      ({
-        params: { slug: post.slug },
-        props: { post },
-      } as any)
+    (post): { params: Params; props: Props } => ({
+      params: { slug: post.slug },
+      props: { post },
+    })
   );
 }
 
