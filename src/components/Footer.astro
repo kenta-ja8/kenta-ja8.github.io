@@ -1,9 +1,15 @@
 ---
 const today = new Date();
+import { execSync } from 'child_process';
+let gitHash = 'unknown';
+try {
+  gitHash = execSync('git rev-parse --short HEAD').toString().trim();
+} catch {}
 ---
 
 <footer>
   &copy; {today.getFullYear()} Kenta. All rights reserved.
+  <span class="githash">({gitHash})</span>
 </footer>
 <style>
   footer {
@@ -14,5 +20,8 @@ const today = new Date();
     top: 100vh;
     font-size: var(--font-size-small);
     padding: 0.5rem;
+  }
+  .githash {
+    margin-left: 0.3em;
   }
 </style>
