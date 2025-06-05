@@ -1,9 +1,9 @@
 ---
 const today = new Date();
-import { execSync } from 'child_process';
-let gitHash = 'unknown';
+import { execSync } from "child_process";
+let gitHash = "unknown";
 try {
-  gitHash = execSync('git rev-parse --short HEAD').toString().trim();
+	gitHash = execSync("git rev-parse --short HEAD").toString().trim();
 } catch {}
 ---
 

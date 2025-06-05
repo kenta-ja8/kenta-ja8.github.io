@@ -8,20 +8,22 @@ import { slugifyTag } from "../../lib/tag";
 import EmojiIcon from "../../components/EmojiIcon.astro";
 
 const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.createdAt.valueOf() - a.data.createdAt.valueOf()
+	(a, b) => b.data.createdAt.valueOf() - a.data.createdAt.valueOf(),
 );
 const map = new Map<string, { name: string; slug: string; count: number }>();
 for (const post of posts) {
-  for (const tag of post.data.tags || []) {
-    const slug = slugifyTag(tag);
-    const entry = map.get(slug) || { name: tag, slug, count: 0 };
-    if (!map.has(slug)) {
-      map.set(slug, entry);
-    }
-    entry.count++;
-  }
+	for (const tag of post.data.tags || []) {
+		const slug = slugifyTag(tag);
+		const entry = map.get(slug) || { name: tag, slug, count: 0 };
+		if (!map.has(slug)) {
+			map.set(slug, entry);
+		}
+		entry.count++;
+	}
 }
-const tags = Array.from(map.values()).sort((a, b) => a.name.localeCompare(b.name));
+const tags = Array.from(map.values()).sort((a, b) =>
+	a.name.localeCompare(b.name),
+);
 ---
 <head>
   <BaseHead title={`${SITE_TITLE} Tags`} />

@@ -15,30 +15,30 @@ const height = 630;
 const width = 1200;
 
 interface Params {
-  slug: string;
+	slug: string;
 }
 
 interface Props {
-  post: CollectionEntry<"blog">;
+	post: CollectionEntry<"blog">;
 }
 
 export async function getStaticPaths() {
-  return (await getCollection("blog")).map(
-    (post): { params: Params; props: Props } => ({
-      params: { slug: post.slug },
-      props: { post },
-    })
-  );
+	return (await getCollection("blog")).map(
+		(post): { params: Params; props: Props } => ({
+			params: { slug: post.slug },
+			props: { post },
+		}),
+	);
 }
 
 export async function GET({ params, props }: APIContext) {
-  const font = fs.readFileSync(fontPath);
-  const iconBuffer = fs.readFileSync("public/my-icon.jpeg");
-  const icon = `data:image/jpeg;base64,${iconBuffer.toString("base64")}`;
+	const font = fs.readFileSync(fontPath);
+	const iconBuffer = fs.readFileSync("public/my-icon.jpeg");
+	const icon = `data:image/jpeg;base64,${iconBuffer.toString("base64")}`;
 
-  const { post } = props;
+	const { post } = props;
 
-  const out = html`<div
+	const out = html`<div
     style="display:flex; flex:1; background:linear-gradient(to bottom right, ${accentColor} 60%, ${subColor}); padding:50px;"
   >
     <div
@@ -56,18 +56,18 @@ export async function GET({ params, props }: APIContext) {
     </div>
   </div>`;
 
-  let svg = await satori(out, {
-    fonts: [
-      {
-        name: "NotoSansJapanese",
-        data: Buffer.from(font),
-        style: "normal",
-      },
-    ],
-    height,
-    width,
-  });
-  const image = await sharp(Buffer.from(svg)).png().toBuffer();
+	let svg = await satori(out, {
+		fonts: [
+			{
+				name: "NotoSansJapanese",
+				data: Buffer.from(font),
+				style: "normal",
+			},
+		],
+		height,
+		width,
+	});
+	const image = await sharp(Buffer.from(svg)).png().toBuffer();
 
-  return new Response(image);
+	return new Response(image);
 }
