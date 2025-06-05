@@ -6,6 +6,7 @@ import { SITE_TITLE } from "../../consts";
 import { getCollection } from "astro:content";
 import PostList from "../../components/PostList.astro";
 import { slugifyTag } from "../../lib/tag";
+import EmojiIcon from "../../components/EmojiIcon.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
@@ -29,17 +30,24 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
   .sort((a, b) => b.data.createdAt.valueOf() - a.data.createdAt.valueOf());
 const displayName = name ?? posts[0]?.data.tags.find((c) => slugifyTag(c) === tag) ?? tag;
 ---
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <BaseHead title={`${displayName} - ${SITE_TITLE}`} />
-  </head>
-  <body>
-    <Header />
-    <main>
-      <h1>{displayName}</h1>
-      <PostList posts={posts} class="fade-in" />
-    </main>
-    <Footer />
-  </body>
-</html>
+<head>
+  <BaseHead title={`${displayName} - ${SITE_TITLE}`} />
+  <style>
+    .tag-header {
+      font-size: var(--font-size-large);
+      font-weight: bold;
+      padding: 1rem 0rem;
+    }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+    <div class="tag-header">
+      <EmojiIcon>🏷️</EmojiIcon>
+      <span>{displayName}</span>
+    </div>
+    <PostList posts={posts} class="fade-in" />
+  </main>
+  <Footer />
+</body>
