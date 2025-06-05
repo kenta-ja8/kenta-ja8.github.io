@@ -1,0 +1,53 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE } from "../../consts";
+import { getCollection } from "astro:content";
+import PostList from "../../components/PostList.astro";
+import { slugifyTag } from "../../lib/tag";
+import EmojiIcon from "../../components/EmojiIcon.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  const map = new Map<string, string>();
+  for (const post of posts) {
+    for (const tag of post.data.tags || []) {
+      const slug = slugifyTag(tag);
+      if (!map.has(slug)) map.set(slug, tag);
+    }
+  }
+  return Array.from(map.entries()).map(([slug, name]) => ({
+    params: { tag: slug },
+    props: { name },
+  }));
+}
+
+const { tag } = Astro.params;
+const { name } = Astro.props;
+const posts = (await getCollection("blog", ({ data }) => !data.draft))
+  .filter((post) => post.data.tags?.some((c) => slugifyTag(c) === tag))
+  .sort((a, b) => b.data.createdAt.valueOf() - a.data.createdAt.valueOf());
+const displayName = name ?? posts[0]?.data.tags.find((c) => slugifyTag(c) === tag) ?? tag;
+---
+<head>
+  <BaseHead title={`${displayName} - ${SITE_TITLE}`} />
+  <style>
+    .tag-header {
+      font-size: var(--font-size-large);
+      font-weight: bold;
+      padding: 1rem 0rem;
+    }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+    <div class="tag-header">
+      <EmojiIcon>🏷️</EmojiIcon>
+      <span>{displayName}</span>
+    </div>
+    <PostList posts={posts} class="fade-in" />
+  </main>
+  <Footer />
+</body>
