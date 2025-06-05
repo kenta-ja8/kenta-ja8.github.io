@@ -8,7 +8,7 @@ import EmojiIcon from "../components/EmojiIcon.astro";
 
 type Props = CollectionEntry<"blog">["data"] & { slug: string };
 
-const { title, createdAt, updatedAt, heroIcon, category, slug } = Astro.props;
+const { title, createdAt, updatedAt, heroIcon, tags, slug } = Astro.props;
 const image = `/og-image/${slug}.png`;
 ---
 
@@ -152,7 +152,7 @@ const image = `/og-image/${slug}.png`;
                   </div>
                 )
               }
-              <div>{category?.map((c) => `#${c}`).join(" ")}</div>
+              <div>{tags?.map((c) => `#${c}`).join(" ")}</div>
             </div>
             <hr class="border" />
           </div>

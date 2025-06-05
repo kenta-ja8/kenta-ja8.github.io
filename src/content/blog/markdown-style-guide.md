@@ -3,7 +3,7 @@ title: 'Markdown Style Guide'
 createdAt: '2023/08/22'
 updatedAt: '2023/08/21'
 heroIcon: '#️⃣'
-category: ["test"]
+tags: ["test"]
 draft: true
 ---
 

@@ -2,10 +2,9 @@
 import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
-import EmojiIcon from "../../components/EmojiIcon.astro";
 import { SITE_TITLE } from "../../consts";
 import { getCollection } from "astro:content";
-import FormattedDate from "../../components/FormattedDate.astro";
+import PostList from "../../components/PostList.astro";
 
 const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
   (a, b) => b.data.createdAt.valueOf() - a.data.createdAt.valueOf()
@@ -16,51 +15,6 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
 <html lang="ja">
   <head>
     <BaseHead title={SITE_TITLE} />
-    <style>
-      .articleList {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-      }
-      .article {
-        width: 100%;
-      }
-      .hero {
-        display: flex;
-        color: var(--font-color-high-emphasis);
-      }
-      .heroIconArea {
-        width: 6rem;
-        font-size: 4em;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .heroContentArea {
-        display: flex;
-        padding: 0.5em;
-        margin-left: 1rem;
-        flex: 1;
-        overflow-wrap: anywhere;
-        flex-direction: column;
-      }
-      .heroContentArea * {
-        margin: 0;
-      }
-      .heroContentArea > * + * {
-        margin-top: 0.6em;
-      }
-      .heroContentMetaArea * {
-        color: var(--font-color-medium-emphasis);
-      }
-      .heroContentMetaArea > * + * {
-        margin-top: 0.1em;
-      }
-    </style>
     <link
       rel="preload"
       href="/fonts/NotoColorEmoji.ttf"
@@ -72,30 +26,7 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
   <body>
     <Header />
     <main>
-      <div class="articleList fade-in">
-        {
-          posts.map((post) => (
-            <article class="article">
-              <a class="hero surface" href={`/blog/${post.slug}/`}>
-                <div class="heroIconArea">
-                  <EmojiIcon>{post.data.heroIcon}</EmojiIcon>
-                </div>
-                <div class="heroContentArea">
-                  <h2 class="title">{post.data.title}</h2>
-                  <div class="heroContentMetaArea">
-                    <div class="date">
-                      <FormattedDate date={post.data.createdAt} />
-                    </div>
-                    <div>
-                      {post.data.category?.map((c) => `#${c}`).join(" ")}
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </article>
-          ))
-        }
-      </div>
+      <PostList posts={posts} class="fade-in" />
     </main>
     <Footer />
   </body>

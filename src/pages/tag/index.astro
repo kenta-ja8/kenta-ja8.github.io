@@ -4,46 +4,55 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { SITE_TITLE } from "../../consts";
 import { getCollection } from "astro:content";
-import { slugifyCategory } from "../../lib/category";
+import { slugifyTag } from "../../lib/tag";
 
 const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
   (a, b) => b.data.createdAt.valueOf() - a.data.createdAt.valueOf()
 );
 const map = new Map<string, { name: string; slug: string; count: number }>();
 for (const post of posts) {
-  for (const cat of post.data.category || []) {
-    const slug = slugifyCategory(cat);
-    const entry = map.get(slug) || { name: cat, slug, count: 0 };
+  for (const tag of post.data.tags || []) {
+    const slug = slugifyTag(tag);
+    const entry = map.get(slug) || { name: tag, slug, count: 0 };
     if (!map.has(slug)) {
       map.set(slug, entry);
     }
     entry.count++;
   }
 }
-const categories = Array.from(map.values()).sort((a, b) => a.name.localeCompare(b.name));
+const tags = Array.from(map.values()).sort((a, b) => a.name.localeCompare(b.name));
 ---
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <BaseHead title={`${SITE_TITLE} Categories`} />
+    <BaseHead title={`${SITE_TITLE} Tags`} />
     <style>
       .list {
         list-style-type: none;
         padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
       }
-      .list li + li {
-        margin-top: 0.5rem;
+      .tag {
+        display: inline-block;
+        padding: 0.3rem 0.6rem;
+        background: var(--surface);
+        border-radius: var(--surface-radius);
+        text-decoration: none;
+        color: inherit;
+        box-shadow: 0 2px 6px rgba(var(--gray), 25%);
       }
     </style>
   </head>
   <body>
     <Header />
     <main class="fade-in">
-      <h1>Categories</h1>
+      <h1>Tags</h1>
       <ul class="list">
-        {categories.map((c) => (
+        {tags.map((c) => (
           <li>
-            <a href={`/category/${c.slug}/`}>{c.name} ({c.count})</a>
+            <a href={`/tag/${c.slug}/`} class="tag">{c.name} ({c.count})</a>
           </li>
         ))}
       </ul>

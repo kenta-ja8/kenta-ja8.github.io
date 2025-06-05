@@ -1,4 +1,4 @@
-export function slugifyCategory(name: string): string {
+export function slugifyTag(name: string): string {
   return name
     .toLowerCase()
     .replace(/\s+/g, '-')
