@@ -27,33 +27,17 @@ const tags = Array.from(map.values()).sort((a, b) =>
 ---
 <head>
   <BaseHead title={`${SITE_TITLE} Tags`} />
-  <style>
-    .list {
-      list-style-type: none;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      line-height: 1.5;
-    }
-    .tag {
-      display: inline-block;
-      padding: 0.3rem 0.6rem;
-      background: var(--surface);
-      border-radius: var(--surface-radius);
-      text-decoration: none;
-      color: inherit;
-      box-shadow: 0 2px 6px rgba(var(--gray), 25%);
-    }
-  </style>
 </head>
 <body>
   <Header />
   <main class="fade-in">
-    <ul class="list">
+    <ul class="list-none p-0 flex flex-wrap gap-2 leading-6">
       {tags.map((c) => (
         <li>
-          <a href={`/tag/${c.slug}/`} class="tag">
+          <a
+            href={`/tag/${c.slug}/`}
+            class="inline-block px-2 py-1 bg-[var(--surface)] rounded-[var(--surface-radius)] no-underline shadow"
+          >
             <EmojiIcon>🏷️</EmojiIcon> {c.name} ({c.count})
           </a>
         </li>
@@ -62,3 +46,4 @@ const tags = Array.from(map.values()).sort((a, b) =>
   </main>
   <Footer />
 </body>
+

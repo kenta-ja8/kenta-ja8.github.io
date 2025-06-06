@@ -1,27 +1,16 @@
 ---
 const today = new Date();
-import { execSync } from "child_process";
+import { execSync } from "node:child_process";
 let gitHash = "unknown";
 try {
 	gitHash = execSync("git rev-parse --short HEAD").toString().trim();
 } catch {}
 ---
 
-<footer>
+<footer
+  class="sticky top-[100vh] bg-[var(--gray-gradient)] text-[var(--font-color-medium-emphasis)] text-center text-[var(--font-size-small)] p-2"
+>
   &copy; {today.getFullYear()} Kenta. All rights reserved.
-  <span class="githash">rev-{gitHash}</span>
+  <span class="ml-[0.3em]">rev-{gitHash}</span>
 </footer>
-<style>
-  footer {
-    background: var(--gray-gradient);
-    color: var(--font-color-medium-emphasis);
-    text-align: center;
-    position: sticky;
-    top: 100vh;
-    font-size: var(--font-size-small);
-    padding: 0.5rem;
-  }
-  .githash {
-    margin-left: 0.3em;
-  }
-</style>
+

@@ -33,18 +33,11 @@ const displayName =
 ---
 <head>
   <BaseHead title={`${displayName} - ${SITE_TITLE}`} />
-  <style>
-    .tag-header {
-      font-size: var(--font-size-large);
-      font-weight: bold;
-      padding: 1rem 0rem;
-    }
-  </style>
 </head>
 <body>
   <Header />
   <main>
-    <div class="tag-header">
+    <div class="text-[var(--font-size-large)] font-bold py-4">
       <EmojiIcon>🏷️</EmojiIcon>
       <span>{displayName}</span>
     </div>
@@ -52,3 +45,4 @@ const displayName =
   </main>
   <Footer />
 </body>
+

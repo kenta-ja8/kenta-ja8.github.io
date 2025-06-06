@@ -9,58 +9,22 @@ import { SITE_TITLE } from "../consts";
 <html lang="ja">
   <head>
     <BaseHead title={SITE_TITLE} />
-    <style>
-      .box {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-      .boxInner {
-        display: flex;
-        justify-content: center;
-      }
-      @media (max-width: 720px) {
-        .boxInner {
-          display: block;
-        }
-      }
-      .boxImage {
-        margin: 1rem;
-      }
-      .boxContent {
-        padding: 0 1rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: end;
-        line-height: 1.0;
-      }
-      .boxContent > * {
-        margin-top: 0.5rem;
-      }
-      .socialLink {
-        color: var(--font-color-emphasis);
-      }
-      .socialLink:hover {
-        color: var(--link-hover-color);
-      }
-    </style>
     <link rel="preload" href="/my-icon.jpeg" as="image" type="image/jpeg" />
   </head>
   <body>
     <Header title={SITE_TITLE} />
     <main>
-      <div class="box">
-        <div class="boxInner fade-in surface">
-          <div class="boxImage">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div class="fade-in surface flex justify-center max-[720px]:block">
+          <div class="m-4">
             <img width={200} src="/my-icon.jpeg" alt="" />
           </div>
-          <div class="boxContent">
+          <div class="px-4 flex flex-col justify-end leading-none space-y-2">
             <h1 class="name">Kenta</h1>
             <div>Software Engineer</div>
-            <div class="boxContentLinks">
+            <div class="flex space-x-2">
               <a
-                class="socialLink"
+                class="text-[var(--font-color-emphasis)] hover:text-[var(--link-hover-color)]"
                 href="https://twitter.com/kenta_ja8"
                 target="_blank"
               >
@@ -78,7 +42,7 @@ import { SITE_TITLE } from "../consts";
                 </svg>
               </a>
               <a
-                class="socialLink"
+                class="text-[var(--font-color-emphasis)] hover:text-[var(--link-hover-color)]"
                 href="https://github.com/kenta-ja8"
                 target="_blank"
               >
@@ -94,7 +58,7 @@ import { SITE_TITLE } from "../consts";
                   </path>
                 </svg>
               </a>
-              <a class="socialLink" href="/rss.xml" target="_blank">
+              <a class="text-[var(--font-color-emphasis)] hover:text-[var(--link-hover-color)]" href="/rss.xml" target="_blank">
                 <svg
                   viewBox="0 0 32 32"
                   width="32"
@@ -117,3 +81,5 @@ import { SITE_TITLE } from "../consts";
     <Footer />
   </body>
 </html>
+
+

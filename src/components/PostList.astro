@@ -8,17 +8,17 @@ const { posts, class: className = "" } = Astro.props as {
 	class?: string;
 };
 ---
-<div class={"articleList " + className}>
+<div class={"flex flex-wrap gap-2 w-full " + className}>
   {posts.map((post) => (
-    <article class="article">
-      <a class="hero surface" href={`/blog/${post.slug}/`}>
-        <div class="heroIconArea">
+    <article class="w-full">
+      <a class="flex surface text-[var(--font-color-emphasis)]" href={`/blog/${post.slug}/`}>
+        <div class="w-24 text-[4em] flex items-center justify-center">
           <EmojiIcon>{post.data.heroIcon}</EmojiIcon>
         </div>
-        <div class="heroContentArea">
-          <h2 class="title">{post.data.title}</h2>
-          <div class="heroContentMetaArea">
-            <div class="date">
+        <div class="flex flex-col p-2 ml-4 flex-1 break-words space-y-2">
+          <h2 class="m-0">{post.data.title}</h2>
+          <div class="text-[var(--font-color-medium-emphasis)] space-y-[0.1em]">
+            <div>
               <FormattedDate date={post.data.createdAt} />
             </div>
             <div>{post.data.tags?.map((c) => `#${c}`).join(' ')}</div>
@@ -28,48 +28,4 @@ const { posts, class: className = "" } = Astro.props as {
     </article>
   ))}
 </div>
-<style>
-  .articleList {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-  }
-  .article {
-    width: 100%;
-  }
-  .hero {
-    display: flex;
-    color: var(--font-color-high-emphasis);
-  }
-  .heroIconArea {
-    width: 6rem;
-    font-size: 4em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .heroContentArea {
-    display: flex;
-    padding: 0.5em;
-    margin-left: 1rem;
-    flex: 1;
-    overflow-wrap: anywhere;
-    flex-direction: column;
-  }
-  .heroContentArea * {
-    margin: 0;
-  }
-  .heroContentArea > * + * {
-    margin-top: 0.6em;
-  }
-  .heroContentMetaArea * {
-    color: var(--font-color-medium-emphasis);
-  }
-  .heroContentMetaArea > * + * {
-    margin-top: 0.1em;
-  }
-</style>
+

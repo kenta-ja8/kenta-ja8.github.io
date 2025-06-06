@@ -2,53 +2,15 @@
 import HeaderLink from "./HeaderLink.astro";
 ---
 
-<header>
-  <nav>
-    <div>
-      <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink href="/blog/">Blog</HeaderLink>
-      <HeaderLink href="/tag/">Tag</HeaderLink>
+<header
+  class="sticky top-0 bg-white/80 backdrop-blur shadow-[0_2px_8px_rgba(var(--black),0.05)] px-4"
+>
+  <nav class="flex items-center justify-center text-[var(--font-size-large)]">
+    <div class="flex">
+      <HeaderLink href="/" class="px-2 py-1 text-black hover:text-[var(--link-hover-color)]">Home</HeaderLink>
+      <HeaderLink href="/blog/" class="px-2 py-1 text-black hover:text-[var(--link-hover-color)]">Blog</HeaderLink>
+      <HeaderLink href="/tag/" class="px-2 py-1 text-black hover:text-[var(--link-hover-color)]">Tag</HeaderLink>
     </div>
   </nav>
 </header>
-<style>
-  header {
-    margin: 0;
-    padding: 0 1em;
-    background: white;
-    box-shadow: 0 2px 8px rgba(var(--black), 5%);
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    background: #ffffffcc;
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--font-size-large);
-  }
-  nav a {
-    padding: 0.2em 0.5em;
-    color: var(--black);
-    text-decoration: none;
-  }
-  nav a.active {
-    text-decoration: none;
-  }
-  nav a:after {
-    border-radius: 1000px;
-    content: "";
-    display: block;
-    height: 4px;
-    margin-top: 0.2em;
-  }
-  nav a.active:after {
-    background-color: var(--accent);
-  }
-  nav a:hover {
-    color: var(--link-hover-color);
-  }
-</style>
+
