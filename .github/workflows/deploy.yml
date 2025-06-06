@@ -10,11 +10,6 @@ permissions:
   pages: write
   id-token: write
 
-env:
-  ASTRO_PATH: "."
-  NODE_VERSION: "20"
-  PNPM_VERSION: "9.x.x"
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,32 +19,19 @@ jobs:
 
       - name: Setup PNPM
         uses: pnpm/action-setup@v4
-        with:
-          version: ${{ env.PNPM_VERSION }}
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: pnpm
-          cache-dependency-path: "${{ env.ASTRO_PATH }}/${{ env.LOCKFILE }}"
 
       - name: Install Package
         shell: "bash"
-        run: |
-          cd ${{ env.ASTRO_PATH }}
-          pnpm install
+        run: pnpm install
 
       - name: Build
         shell: "bash"
-        run: |
-          cd ${{ env.ASTRO_PATH }}
-          pnpm run build
+        run: pnpm run build
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "${{ env.ASTRO_PATH}}/dist/"
+          path: "./dist/"
 
   deploy:
     needs: build
