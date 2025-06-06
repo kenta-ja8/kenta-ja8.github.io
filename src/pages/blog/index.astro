@@ -22,10 +22,23 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
       type="font/ttf"
       crossorigin
     />
+    <style>
+      .tag-link { text-align: right; margin: 0.5rem 0; }
+      .tag {
+        color: var(--link-color);
+      }
+      .tag:hover {
+        color: var(--link-hover-color);
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
     <Header />
     <main>
+        <div class="tag-link">
+          <a href="/blog/tag/" class="tag"> All Tags </a>
+        </div>
       <PostList posts={posts} class="fade-in" />
     </main>
     <Footer />
