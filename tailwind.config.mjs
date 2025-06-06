@@ -1,6 +1,4 @@
-import { defineConfig } from "tailwindcss";
-
-export default defineConfig({
+export default {
 	content: ["./src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte,mdx}"],
 	theme: {
 		extend: {
@@ -21,4 +19,4 @@ export default defineConfig({
 		},
 	},
 	plugins: [],
-});
+};
