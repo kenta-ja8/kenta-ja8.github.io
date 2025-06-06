@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import EmojiIcon from "./EmojiIcon.astro";
 import FormattedDate from "./FormattedDate.astro";
+import { slugifyTag } from "../lib/tag";
 
 const { posts, class: className = "" } = Astro.props as {
 	posts: CollectionEntry<"blog">[];
@@ -21,7 +22,13 @@ const { posts, class: className = "" } = Astro.props as {
             <div class="date">
               <FormattedDate date={post.data.createdAt} />
             </div>
-            <div>{post.data.tags?.map((c) => `#${c}`).join(' ')}</div>
+            <div class="tags">
+              {post.data.tags?.map((tag) => (
+                <a href={`/blog/tag/${slugifyTag(tag)}/`} class="tag">
+                  <EmojiIcon>🏷️</EmojiIcon> {tag}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </a>
@@ -71,5 +78,19 @@ const { posts, class: className = "" } = Astro.props as {
   }
   .heroContentMetaArea > * + * {
     margin-top: 0.1em;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  .tag {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    background: var(--surface);
+    border-radius: var(--surface-radius);
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 6px rgba(var(--gray), 25%);
   }
 </style>
