@@ -3,7 +3,7 @@ import satori from "satori";
 import { html } from "satori-html";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
-import fs from "fs";
+import fs from "node:fs";
 import sharp from "sharp";
 
 const fontPath = "src/lib/NotoSansJP-SemiBold.ttf";
@@ -56,7 +56,7 @@ export async function GET({ params, props }: APIContext) {
     </div>
   </div>`;
 
-	let svg = await satori(out, {
+	const svg = await satori(out, {
 		fonts: [
 			{
 				name: "NotoSansJapanese",
