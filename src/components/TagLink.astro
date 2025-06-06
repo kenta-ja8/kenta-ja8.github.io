@@ -1,0 +1,35 @@
+---
+import EmojiIcon from "./EmojiIcon.astro";
+
+interface Props {
+	href: string;
+	tag: string;
+}
+const { tag, href } = Astro.props;
+---
+<a href={href} class="tagLink">
+  <div class="tagIconArea">
+    <EmojiIcon>🏷️</EmojiIcon>
+  </div>
+  <span class="tag">{tag}</span>
+</a>
+<style>
+  .tagIconArea {
+    width: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tagLink {
+    display: inline-flex;
+  }
+  .tagLink:hover {
+    text-decoration: underline;
+  }
+  .tag {
+    color: var(--font-color-medium-emphasis);
+  }
+  .tag:hover {
+    color: var(--link-hover-color);
+  }
+</style>
