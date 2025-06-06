@@ -6,6 +6,7 @@ import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import EmojiIcon from "../components/EmojiIcon.astro";
 import { slugifyTag } from "../lib/tag";
+import TagLink from "../components/TagLink.astro";
 
 type Props = CollectionEntry<"blog">["data"] & { slug: string };
 
@@ -170,9 +171,7 @@ const image = `/og-image/${slug}.png`;
               }
               <div class="tags">
                 {tags?.map((tag) => (
-                  <a href={`/blog/tag/${slugifyTag(tag)}/`} class="tag">
-                    <EmojiIcon>🏷️</EmojiIcon> {tag}
-                  </a>
+                  <TagLink tag={tag} href={`/blog/tag/${slugifyTag(tag)}/`} />
                 ))}
               </div>
             </div>

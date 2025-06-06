@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import EmojiIcon from "./EmojiIcon.astro";
 import FormattedDate from "./FormattedDate.astro";
 import { slugifyTag } from "../lib/tag";
+import TagLink from "./TagLink.astro";
 
 const { posts, class: className = "" } = Astro.props as {
 	posts: CollectionEntry<"blog">[];
@@ -11,8 +12,9 @@ const { posts, class: className = "" } = Astro.props as {
 ---
 <div class={"articleList " + className}>
   {posts.map((post) => (
-    <article class="article">
-      <a class="hero surface" href={`/blog/${post.slug}/`}>
+    <div class="article">
+      <a class="postLink" href={`/blog/${post.slug}/`} />
+      <div class="hero surface">
         <div class="heroIconArea">
           <EmojiIcon>{post.data.heroIcon}</EmojiIcon>
         </div>
@@ -24,15 +26,13 @@ const { posts, class: className = "" } = Astro.props as {
             </div>
             <div class="tags">
               {post.data.tags?.map((tag) => (
-                <a href={`/blog/tag/${slugifyTag(tag)}/`} class="tag">
-                  <EmojiIcon>🏷️</EmojiIcon> {tag}
-                </a>
+                <TagLink tag={tag} href={`/blog/tag/${slugifyTag(tag)}/`} />
               ))}
             </div>
           </div>
         </div>
-      </a>
-    </article>
+      </div>
+    </div>
   ))}
 </div>
 <style>
@@ -47,6 +47,11 @@ const { posts, class: className = "" } = Astro.props as {
   }
   .article {
     width: 100%;
+    position: relative;
+  }
+  .postLink {
+    position: absolute;
+    inset: 0;
   }
   .hero {
     display: flex;
@@ -83,14 +88,6 @@ const { posts, class: className = "" } = Astro.props as {
     display: flex;
     flex-wrap: wrap;
     gap: 0.3rem;
-  }
-  .tag {
-    display: inline-block;
-    padding: 0.3rem 0.6rem;
-    background: var(--surface);
-    border-radius: var(--surface-radius);
-    text-decoration: none;
-    color: inherit;
-    box-shadow: 0 2px 6px rgba(var(--gray), 25%);
+    position: relative;
   }
 </style>
