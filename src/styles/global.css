@@ -6,6 +6,7 @@
 	--back-ground: var(--gray-100);
 	--surface: white;
 	--surface-radius: 8px;
+	--link-color: var(--accent-dark);
 	--link-hover-color: var(--accent);
 	--font-color-emphasis: rgba(0, 0, 0, 0.87);
 	--font-color-medium-emphasis: rgba(0, 0, 0, 0.6);
