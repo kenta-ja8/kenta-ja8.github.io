@@ -1,11 +1,11 @@
 ---
-import BaseHead from "../../components/BaseHead.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import { SITE_TITLE } from "../../consts";
+import BaseHead from "../../../components/BaseHead.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import { SITE_TITLE } from "../../../consts";
 import { getCollection } from "astro:content";
-import { slugifyTag } from "../../lib/tag";
-import EmojiIcon from "../../components/EmojiIcon.astro";
+import { slugifyTag } from "../../../lib/tag";
+import EmojiIcon from "../../../components/EmojiIcon.astro";
 
 const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
 	(a, b) => b.data.createdAt.valueOf() - a.data.createdAt.valueOf(),
@@ -53,7 +53,7 @@ const tags = Array.from(map.values()).sort((a, b) =>
     <ul class="list">
       {tags.map((c) => (
         <li>
-          <a href={`/tag/${c.slug}/`} class="tag">
+          <a href={`/blog/tag/${c.slug}/`} class="tag">
             <EmojiIcon>🏷️</EmojiIcon> {c.name} ({c.count})
           </a>
         </li>
