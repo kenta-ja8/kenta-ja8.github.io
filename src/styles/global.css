@@ -61,21 +61,13 @@
 	}
 
 	body {
-		@apply font-sans bg-[var(--back-ground)] text-[var(--font-color-emphasis)] text-base min-h-screen overflow-y-scroll;
+		font-family: var(--font-sans), sans-serif;
+		font-size: 1rem;
+		@apply bg-[var(--back-ground)] text-[var(--font-color-emphasis)] min-h-screen overflow-y-scroll;
 	}
 
 	a {
 		@apply [text-decoration:inherit];
-	}
-
-	main {
-		@apply w-[960px] max-w-full mx-auto p-4;
-	}
-
-	@media (max-width: 768px) {
-		main {
-			@apply p-2;
-		}
 	}
 
 	@font-face {
@@ -86,11 +78,13 @@
 
 @layer components {
 	.surface {
-		@apply bg-[var(--surface)] rounded-[var(--surface-radius)] p-6;
+		background-color: var(--surface);
+		border-radius: var(--surface-radius);
+		padding: 1.5rem;
 	}
 	@media (max-width: 768px) {
 		.surface {
-			@apply p-2;
+			padding: 0.5rem;
 		}
 	}
 }
