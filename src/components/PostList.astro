@@ -26,7 +26,7 @@ const { posts, class: className = "" } = Astro.props as {
             </div>
             <div class="tags">
               {post.data.tags?.map((tag) => (
-                <TagLink tag={tag} href={`/blog/tag/${slugifyTag(tag)}/`} />
+                <TagLink class={"tagLinkComponent"} tag={tag} href={`/blog/tag/${slugifyTag(tag)}/`} />
               ))}
             </div>
           </div>
@@ -88,6 +88,8 @@ const { posts, class: className = "" } = Astro.props as {
     display: flex;
     flex-wrap: wrap;
     gap: 0.3rem;
+  }
+  .tagLinkComponent {
     position: relative;
   }
 </style>
