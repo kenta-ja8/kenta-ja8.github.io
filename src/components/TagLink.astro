@@ -1,35 +1,31 @@
 ---
 import EmojiIcon from "./EmojiIcon.astro";
+import type { HTMLAttributes } from "astro/types";
 
-interface Props {
-	href: string;
+interface Props extends HTMLAttributes<"a"> {
 	tag: string;
 }
-const { tag, href } = Astro.props;
+
+const { tag, href, class: className, ...rest } = Astro.props;
 ---
-<a href={href} class="tagLink">
+<a href={href} class:list={[className, 'tagLink']} {...rest}>
   <div class="tagIconArea">
     <EmojiIcon>🏷️</EmojiIcon>
   </div>
-  <span class="tag">{tag}</span>
+  <span>{tag}</span>
 </a>
 <style>
+  .tagLink {
+    display: inline-flex;
+    color: var(--font-color-medium-emphasis);
+  }
+  .tagLink:hover {
+    text-decoration: underline;
+  }
   .tagIconArea {
     width: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  .tagLink {
-    display: inline-flex;
-  }
-  .tagLink:hover {
-    text-decoration: underline;
-  }
-  .tag {
-    color: var(--font-color-medium-emphasis);
-  }
-  .tag:hover {
-    color: var(--link-hover-color);
   }
 </style>
