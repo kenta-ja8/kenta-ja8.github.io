@@ -7,16 +7,25 @@ import FormattedDate from "../components/FormattedDate.astro";
 import EmojiIcon from "../components/EmojiIcon.astro";
 import { slugifyTag } from "../lib/tag";
 import TagLink from "../components/TagLink.astro";
+import { SITE_TITLE } from "../consts";
 
 type Props = CollectionEntry<"blog">["data"] & { slug: string };
 
-const { title, createdAt, updatedAt, heroIcon, tags, slug } = Astro.props;
+const { title, createdAt, updatedAt, heroIcon, tags, slug, description } =
+	Astro.props;
 const image = `/og-image/${slug}.png`;
 ---
 
 <html lang="ja">
   <head>
-    <BaseHead title={title} image={image} />
+    <BaseHead 
+      title={`${title} | ${SITE_TITLE}`} 
+      description={description} 
+      image={image} 
+      isArticle={true}
+      createdAt={createdAt.toISOString()}
+      updatedAt={updatedAt?.toISOString()}
+    />
     <style>
       .hero-icon {
         font-size: 4em;

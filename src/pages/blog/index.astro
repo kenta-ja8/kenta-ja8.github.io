@@ -14,7 +14,7 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <BaseHead title={SITE_TITLE} />
+    <BaseHead title="ブログ記事一覧 | Kenta Blog" description="Kenta の技術ブログ記事一覧ページ。プログラミング、開発、技術に関する記事をまとめています。" />
     <link
       rel="preload"
       href="/fonts/NotoColorEmoji.ttf"
