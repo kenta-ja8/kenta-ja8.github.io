@@ -137,6 +137,16 @@ const image = `/og-image/${slug}.png`;
         padding: 1em;
         border-radius: 8px;
       }
+      .contentBox :global(.remark-code-title) {
+        margin: 1em 0 -1.2em 0;
+        padding: 0.8em 0.8em;
+        font-size: 0.7em;
+        background: var(--gray-700);
+        color: white;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        width: fit-content;
+      }
       .contentBox :global(code:not(pre code)) {
         padding: 0.2em 0.2em;
         margin: 0 0.1em;
