@@ -49,8 +49,8 @@ importers:
         specifier: ^0.32.0
         version: 0.32.0
       pnpm:
-        specifier: ^10.11.1
-        version: 10.11.1
+        specifier: ^10.13.1
+        version: 10.13.1
       remark-code-titles:
         specifier: ^0.1.2
         version: 0.1.2
@@ -1552,8 +1552,8 @@ packages:
     resolution: {integrity: sha512-M7BAV6Rlcy5u+m6oPhAPFgJTzAioX/6B0DxyvDlo9l8+T3nLKbrczg2WLUyzd45L8RqfUMyGPzekbMvX2Ldkwg==}
     engines: {node: '>=12'}
 
-  pnpm@10.11.1:
-    resolution: {integrity: sha512-5Rm592OYadyNXDxd/vc7PwkQlLCgBtcxc1PHKxJOgOGv1ClzLihwWta/oe6HnB/ORsEozOvTGSEB9D3WfGZ5Eg==}
+  pnpm@10.13.1:
+    resolution: {integrity: sha512-N+vxpcejDV+r4MXfRO6NpMllygxa89urKMOhaBtwolYhjQXIHJwNz3Z+9rhVHrW5YAQrntQwDFkkIzY3fgHPrQ==}
     engines: {node: '>=18.12'}
     hasBin: true
 
@@ -3820,7 +3820,7 @@ snapshots:
 
   picomatch@4.0.2: {}
 
-  pnpm@10.11.1: {}
+  pnpm@10.13.1: {}
 
   postcss-value-parser@4.2.0: {}
 

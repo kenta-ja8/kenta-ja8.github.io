@@ -27,7 +27,7 @@
 		"@astrojs/partytown": "^2.1.4",
 		"@biomejs/biome": "^2.1.1",
 		"@types/sharp": "^0.32.0",
-		"pnpm": "^10.11.1",
+		"pnpm": "^10.13.1",
 		"remark-code-titles": "^0.1.2"
 	}
 }
