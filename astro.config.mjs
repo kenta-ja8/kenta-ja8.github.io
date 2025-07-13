@@ -20,5 +20,8 @@ export default defineConfig({
 	],
 	markdown: {
 		remarkPlugins: [remarkCodeTitles],
+		shikiConfig: {
+			theme: "github-dark-dimmed",
+		},
 	},
 });
