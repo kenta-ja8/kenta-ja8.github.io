@@ -19,7 +19,7 @@
 		"@resvg/resvg-js-darwin-arm64": "^2.6.2",
 		"astro": "^5.11.0",
 		"ress": "^5.0.2",
-		"satori": "^0.15.2",
+		"satori": "^0.18.2",
 		"satori-html": "^0.3.2",
 		"sharp": "^0.34.2"
 	},
