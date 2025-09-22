@@ -21,7 +21,7 @@
 		"ress": "^5.0.2",
 		"satori": "^0.15.2",
 		"satori-html": "^0.3.2",
-		"sharp": "^0.34.2"
+		"sharp": "^0.34.4"
 	},
 	"devDependencies": {
 		"@astrojs/partytown": "^2.1.4",
