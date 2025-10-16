@@ -3,7 +3,7 @@
 // all pages through the use of the <BaseHead /> component.
 import "ress/dist/ress.min.css";
 import "../styles/global.css";
-import { AUTHOR, SITE_TITLE } from "../consts";
+import { AUTHOR, SITE_TITLE, RSS_PATH } from "../consts";
 
 interface Props {
 	title: string;
@@ -95,6 +95,9 @@ import ProductionOnly from "./ProductionOnly.astro";
     gtag("config", "G-74QJTSY96X");
   </script>
 </ProductionOnly>
+
+<!-- RSS -->
+<link rel="alternate" type="application/rss+xml" href={RSS_PATH} title="Blog Posts">
 
 <!-- Structured Data (JSON-LD) -->
 <script type="application/ld+json" set:html={JSON.stringify({

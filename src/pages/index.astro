@@ -2,7 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { SITE_TITLE } from "../consts";
+import { SITE_TITLE, RSS_PATH } from "../consts";
 ---
 
 <!DOCTYPE html>
@@ -99,7 +99,7 @@ import { SITE_TITLE } from "../consts";
                   </path>
                 </svg>
               </a>
-              <a class="socialLink" href="/rss.xml" target="_blank" aria-label="RSS フィードを購読する">
+              <a class="socialLink" href={RSS_PATH} target="_blank" aria-label="RSS フィードを購読する">
                 <svg
                   viewBox="0 0 32 32"
                   width="32"
