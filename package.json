@@ -17,7 +17,7 @@
 		"@astrojs/sitemap": "^3.4.1",
 		"@resvg/resvg-js": "^2.6.2",
 		"@resvg/resvg-js-darwin-arm64": "^2.6.2",
-		"astro": "^5.15.1",
+		"astro": "^5.16.3",
 		"ress": "^5.0.2",
 		"satori": "^0.18.3",
 		"satori-html": "^0.3.2",
