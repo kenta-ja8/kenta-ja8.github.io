@@ -93,7 +93,7 @@ main {
 @keyframes fadeIn {
 	from {
 		opacity: 0;
-		transform: translateY(0.5rem);
+		transform: translateY(var(--fade-in-offset, 0.5rem));
 	}
 	to {
 		opacity: 1;
@@ -101,7 +101,14 @@ main {
 	}
 }
 .fade-in {
-	animation-name: fadeIn;
-	animation-duration: 0.4s;
-	animation-timing-function: ease-out;
+	animation: none;
+	overflow-anchor: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.fade-in {
+		animation-name: fadeIn;
+		animation-duration: 0.4s;
+		animation-timing-function: ease-out;
+	}
 }

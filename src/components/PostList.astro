@@ -11,8 +11,8 @@ const { posts, class: className = "" } = Astro.props as {
 };
 ---
 <div class={"articleList " + className}>
-  {posts.map((post) => (
-    <div class="article">
+  {posts.map((post, index) => (
+    <div class="article fade-in" style={`--fade-in-offset: ${Math.min(12 + index * 6, 36)}px;`}>
       <a class="postLink" href={`/blog/${post.slug}/`} />
       <div class="hero surface">
         <div class="heroIconArea">
