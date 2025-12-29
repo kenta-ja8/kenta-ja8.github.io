@@ -39,7 +39,7 @@ tags: ["AI Agent", "Pydantic AI"]
 ## 実際に動かす
 
 - コードは下記です
-  - https:
+  - https://github.com/kenta-ja8/oss-health-check
 - ログ出力するように自前でコードを書いています
 
 ### AI Agent のコア部分
