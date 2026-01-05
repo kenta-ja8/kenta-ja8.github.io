@@ -25,7 +25,7 @@
 	},
 	"devDependencies": {
 		"@astrojs/partytown": "^2.1.4",
-		"@biomejs/biome": "^2.3.8",
+		"@biomejs/biome": "^2.3.11",
 		"@types/sharp": "^0.32.0",
 		"pnpm": "^10.25.0",
 		"remark-code-titles": "^0.1.2"
