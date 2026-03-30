@@ -24,7 +24,7 @@
 		"sharp": "^0.34.5"
 	},
 	"devDependencies": {
-		"@astrojs/partytown": "^2.1.4",
+		"@astrojs/partytown": "^2.1.6",
 		"@biomejs/biome": "^2.3.8",
 		"@types/sharp": "^0.32.0",
 		"pnpm": "^10.33.0",
