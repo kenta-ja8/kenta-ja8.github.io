@@ -129,7 +129,9 @@ const image = `/og-image/${slug}.png`;
       .contentBox :global(> table) {
         width: 100%;
       }
-      .contentBox :global(img) {
+      .contentBox :global(img),
+      .contentBox :global(video) {
+        display: block;
         max-width: 100%;
         height: auto;
         border-radius: 8px;
